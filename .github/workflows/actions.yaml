@@ -1,8 +1,8 @@
-name: test
+name: check-code-style
 on: push
 
 jobs:
-  test:
+  check-code-style:
     runs-on: ubuntu-latest
 
     steps:
@@ -11,6 +11,12 @@ jobs:
 
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
         uses: ./.github/workflows/setup-node
+
+      - name: Code style ✅
+        run: npm run check-code
+
+      - name: Lint ✅
+        run: npm run lint
 
       - name: Test 🧪
         run: npm run test-coverage
