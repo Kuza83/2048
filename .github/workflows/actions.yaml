@@ -1,5 +1,7 @@
-name: check-code-style
+name: check code and build a dockerfile and push on dockerhub
 on: push
+
+permissions: read-all
 
 jobs:
   check-code-style:
