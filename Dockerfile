@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 
-COPY . ./
+COPY . .
 RUN npm run build
 
 # Stage 2: Serve the app with Nginx
