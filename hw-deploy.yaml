@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: helloworld
+  name: 2048
   namespace: pre-prod
 spec:
   selector:
     matchLabels:
-      app: helloworld
+      app: 2048
   replicas: 3
   template:
     metadata:
       labels:
-        app: helloworld
+        app: 2048
     spec:
       containers:
-      - name: helloworld
-        image: karthequian/helloworld:black
+      - name: 2048
+        image: kuza83/2048:test
         ports:
         - containerPort: 80
 
@@ -24,7 +24,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: hw-service
+  name: 2048-service
   namespace: pre-prod
 spec:
   type: NodePort
@@ -34,4 +34,4 @@ spec:
     targetPort: 80
     nodePort: 30008
   selector:
-    app: helloworld
+    app: 2048
