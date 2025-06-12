@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: 2048
+  name: 2048-test
   namespace: pre-prod
 spec:
   selector:
     matchLabels:
-      app: 2048
+      app: 2048-test
   replicas: 3
   template:
     metadata:
       labels:
-        app: 2048
+        app: 2048-test
     spec:
       containers:
-      - name: 2048
+      - name: 2048-test
         image: kuza83/2048:test
         ports:
         - containerPort: 80
@@ -34,4 +34,4 @@ spec:
     targetPort: 80
     nodePort: 30008
   selector:
-    app: 2048
+    app: 2048-test
