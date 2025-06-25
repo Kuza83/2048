@@ -55,11 +55,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: |
-            kuza83/2048:test
-            kuza83/2048:${{ github.sha }}
-            kuza83/2048:${{ github.ref_name }}
-            kuza83/2048:${{ steps.vars.outputs.VERSION }}
+          tags: kuza83/2048:${{ steps.vars.outputs.VERSION }}
 
   Deploy:
     runs-on: ubuntu-latest
