@@ -14,7 +14,7 @@ spec:
         app: app
     spec:
       containers:
-      - name: 2048
+      - name: app
         image: ${{ secrets.DOCKERHUB_USERNAME }}/2048:${{ env.VERSION }}
         ports:
         - containerPort: 80
