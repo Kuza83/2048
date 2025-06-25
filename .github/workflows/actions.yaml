@@ -54,7 +54,8 @@ jobs:
             - Second Change
           draft: false
           prerelease: false
-
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # - name: Install jq
       #   run: sudo apt-get update && sudo apt-get install -y jq
 
