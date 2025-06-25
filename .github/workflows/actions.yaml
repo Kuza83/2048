@@ -1,10 +1,10 @@
 ---
-
 name: check code and build a dockerfile and push on dockerhub
 on:
   push:
     tags:
-      - v*
+      # trunk-ignore(yamllint/quoted-strings)
+      - "v*"
 
 permissions: {}
 
@@ -38,7 +38,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Create Release
         id: create_release
         uses: comnoco/create-release@v2
