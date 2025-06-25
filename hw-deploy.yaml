@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-2048
+  name: app_2048
   namespace: pre-prod
 spec:
   selector:
     matchLabels:
-      app: app-2048
+      app: app_2048
   replicas: 3
   template:
     metadata:
       labels:
-        app: app-2048
+        app: app_2048
     spec:
       containers:
-      - name: app-2048
+      - name: app_2048
         image: ${{ secrets.DOCKERHUB_USERNAME }}/2048:${{ env.VERSION }}
         ports:
         - containerPort: 80
@@ -24,7 +24,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: 2048-service
+  name: 2048_service
   namespace: pre-prod
 spec:
   type: NodePort
@@ -34,4 +34,4 @@ spec:
     targetPort: 80
     nodePort: 30007
   selector:
-    app: app-2048
+    app: app_2048
