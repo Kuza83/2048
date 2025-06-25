@@ -1,30 +1,42 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "2048"
+  name: ecodeals
   namespace: pre-prod
 spec:
   selector:
     matchLabels:
-      app: "2048"
+      app: ecodeals
   replicas: 3
   template:
     metadata:
       labels:
-        app: "2048"
+        app: ecodeals
     spec:
       containers:
-      - name: "2048"
-        image: ${{ secrets.DOCKERHUB_USERNAME }}/2048:${{ env.VERSION }}
+      - name: ecodeals
+        image: ${{ secrets.DOCKERHUB_USERNAME }}/ecodeals:${{ env.VERSION }}
         ports:
         - containerPort: 80
 
 ---
 
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+  namespace: dev
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+---
+
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-app
+  name: ecodeals-service
   namespace: pre-prod
 spec:
   type: NodePort
@@ -32,6 +44,6 @@ spec:
   - port: 80
     protocol: TCP
     targetPort: 80
-    nodePort: 30007
+    nodePort: 30010
   selector:
-    app: "2048"
+    app: ecodeals
