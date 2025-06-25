@@ -40,7 +40,7 @@ jobs:
       - name: Extract version
         id: vars
         run: |
-          echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+          echo "VERSION=$(jq -r "version": package.json)" >> $GITHUB_OUTPUT
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
