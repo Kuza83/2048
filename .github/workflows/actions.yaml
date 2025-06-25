@@ -55,7 +55,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: kuza83/2048:${{ steps.vars.outputs.VERSION }}
+          tags: kuza83/2048:latest
 
   Deploy:
     runs-on: ubuntu-latest
@@ -66,5 +66,7 @@ jobs:
       - uses: actions-hub/kubectl@master
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+
+      - uses: actions-hub/kubectl@master
         with:
           args: apply -f hw-deploy.yaml
