@@ -4,9 +4,10 @@ on:
   push:
     tags:
       # trunk-ignore(yamllint/quoted-strings)
-      - "v*"
+      - "v*.*.*"
 
-permissions: {}
+permissions:
+  contents: write
 
 jobs:
   Check-code-style:
