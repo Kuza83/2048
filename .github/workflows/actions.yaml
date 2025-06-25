@@ -55,7 +55,8 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: kuza83/2048:latest
+          tags: kuza83/2048:${{ steps.vars.outputs.VERSION }}
+
 
   Deploy:
     runs-on: ubuntu-latest
