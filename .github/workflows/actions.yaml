@@ -1,7 +1,9 @@
 name: check code and build a dockerfile and push on dockerhub
 on:
   push:
-    branches: [ main ]
+    tags :
+      # trunk-ignore(yamllint/quoted-strings)
+      - "v[0-9]+.[0-9]+.[0-9]+"
 
 permissions: read-all
 
