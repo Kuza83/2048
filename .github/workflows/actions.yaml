@@ -71,7 +71,6 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/2048:${{ env.VERSION }}
 
-
   Deploy:
     runs-on: ubuntu-latest
 
