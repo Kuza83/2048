@@ -1,3 +1,4 @@
+# trunk-ignore-all(prettier)
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,35 +16,13 @@ spec:
     spec:
       containers:
       - name: ecodeals
-        image: ${{ secrets.DOCKERHUB_USERNAME }}/ecodeals:${{ env.VERSION }}
+        image: karthequian/helloworld:latest #${{ secrets.DOCKERHUB_USERNAME }}/ecodeals:${{ env.VERSION }}
         ports:
         - containerPort: 80
-
----
-
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: default-deny-all
-  namespace: dev
-spec:
-  podSelector: {}
-  policyTypes:
-  - Ingress
-  - Egress
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: ecodeals-service
-  namespace: pre-prod
-spec:
-  type: NodePort
-  ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 80
-    nodePort: 30010
-  selector:
-    app: ecodeals
+        resources:
+          requests:
+            memory: "8Mi"
+            cpu: "1"
+          limits:
+            memory: "16Mi"
+            cpu: "2"
