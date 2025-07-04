@@ -4,20 +4,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app
+  name: hw
   namespace: pre-prod
 spec:
   selector:
     matchLabels:
-      app: app
+      app: hw
   replicas: 3
   template:
     metadata:
       labels:
-        app: app
+        app: hw
     spec:
       containers:
-      - name: app
+      - name: hw
         image: ${{ secrets.DOCKERHUB_USERNAME }}/2048:${{ env.VERSION }}
         ports:
         - containerPort: 80
@@ -35,6 +35,6 @@ spec:
   - port: 80
     protocol: TCP
     targetPort: 80
-    nodePort: 30007
+    nodePort: 30023
   selector:
     app: app
